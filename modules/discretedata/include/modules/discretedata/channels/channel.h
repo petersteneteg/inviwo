@@ -131,7 +131,7 @@ private:
 // auto channeldispatching::dispatch(DataFormatId format, ind numComponents, Callable &&obj, Args
 // &&... args) -> Result;
 
-namespace detail {
+namespace detail_dd {
 struct ChannelDispatcher {
     template <typename Result, typename T, ind N, typename Callable, typename... Args>
     Result operator()(Callable&& obj, Channel* channel, Args... args) {
@@ -149,14 +149,14 @@ struct ChannelConstDispatcher {
                    std::forward<Args>(args)...);
     }
 };
-}  // namespace detail
+}  // namespace detail_dd
 
 // Variants with filter and dimension range.
 
 template <typename Result, template <class> class Predicate, ind Min, ind Max, typename Callable,
           typename... Args>
 auto Channel::dispatch(Callable&& callable, Args&&... args) -> Result {
-    detail::ChannelDispatcher dispatcher;
+    detail_dd::ChannelDispatcher dispatcher;
     return channeldispatching::dispatch<Result, Predicate, Min, Max>(
         getDataFormatId(), getNumComponents(), dispatcher, std::forward<Callable>(callable), this,
         std::forward<Args>(args)...);
@@ -165,7 +165,7 @@ auto Channel::dispatch(Callable&& callable, Args&&... args) -> Result {
 template <typename Result, template <class> class Predicate, ind Min, ind Max, typename Callable,
           typename... Args>
 auto Channel::dispatch(Callable&& callable, Args&&... args) const -> Result {
-    detail::ChannelConstDispatcher dispatcher;
+    detail_dd::ChannelConstDispatcher dispatcher;
     return channeldispatching::dispatch<Result, Predicate, Min, Max>(
         getDataFormatId(), getNumComponents(), dispatcher, std::forward<Callable>(callable), this,
         std::forward<Args>(args)...);
@@ -175,7 +175,7 @@ auto Channel::dispatch(Callable&& callable, Args&&... args) const -> Result {
 
 template <typename Result, typename Callable, typename... Args>
 auto Channel::dispatch(Callable&& callable, Args&&... args) -> Result {
-    detail::ChannelDispatcher dispatcher;
+    detail_dd::ChannelDispatcher dispatcher;
     return channeldispatching::dispatch<Result, dispatching::filter::Scalars, 1, 4>(
         getDataFormatId(), getNumComponents(), dispatcher, std::forward<Callable>(callable), this,
         std::forward<Args>(args)...);
@@ -183,7 +183,7 @@ auto Channel::dispatch(Callable&& callable, Args&&... args) -> Result {
 
 template <typename Result, typename Callable, typename... Args>
 auto Channel::dispatch(Callable&& callable, Args&&... args) const -> Result {
-    detail::ChannelConstDispatcher dispatcher;
+    detail_dd::ChannelConstDispatcher dispatcher;
     return channeldispatching::dispatch<Result, dispatching::filter::Scalars, 1, 4>(
         getDataFormatId(), getNumComponents(), dispatcher, std::forward<Callable>(callable), this,
         std::forward<Args>(args)...);
