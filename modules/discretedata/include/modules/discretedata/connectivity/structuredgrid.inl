@@ -41,7 +41,6 @@ template <ind N>
 StructuredGrid<N>::StructuredGrid(const std::array<ind, N>& numCells)
     : Connectivity(static_cast<GridPrimitive>(N)), numCellsPerDimension_(numCells) {
     calculateSizes();
-    std::cout << std::endl;
 }
 
 template <ind N>
