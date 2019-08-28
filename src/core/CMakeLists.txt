@@ -298,6 +298,7 @@ set(HEADER_FILES
     ${IVW_INCLUDE_DIR}/inviwo/core/util/imageramutils.h
     ${IVW_INCLUDE_DIR}/inviwo/core/util/imagesampler.h
     ${IVW_INCLUDE_DIR}/inviwo/core/util/indexmapper.h
+    ${IVW_INCLUDE_DIR}/inviwo/core/util/indexmapper2.h
     ${IVW_INCLUDE_DIR}/inviwo/core/util/indirectiterator.h
     ${IVW_INCLUDE_DIR}/inviwo/core/util/interpolation.h
     ${IVW_INCLUDE_DIR}/inviwo/core/util/intersection/rayplaneintersection.h
@@ -636,6 +637,7 @@ set(TEST_FILES
     tests/unittests/enumoptionproperty-test.cpp
     tests/unittests/filesystem-test.cpp
     tests/unittests/glm-test.cpp
+	tests/unittests/indexmapper-test.cpp
     tests/unittests/indirectiterator-tests.cpp
     tests/unittests/interpolation-tests.cpp
     tests/unittests/inviwo-core-unittest-main.cpp
