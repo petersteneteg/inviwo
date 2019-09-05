@@ -11,6 +11,9 @@ jobs:
     - uses: actions/checkout@v1
     - name: configure
       run: |
+        ls
+        pwd
+        git submodule update --init --recursive
         cmake .
         cmake --build
       shell: bash
