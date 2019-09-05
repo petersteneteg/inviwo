@@ -13,4 +13,4 @@ jobs:
       run: |
         cmake .
         cmake --build
-      sheel: bash
+      shell: bash
