@@ -12,9 +12,11 @@ jobs:
     - name: configure
       run: |
         set +x
-        ls
         pwd
         git submodule update --init --recursive
-        cmake .
-        cmake --build
+        cd ..
+        mkdir build
+        cd build
+        cmake ../inviwo
+        cmake --build .
       shell: bash
