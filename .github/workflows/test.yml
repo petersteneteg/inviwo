@@ -1,4 +1,4 @@
-name: "Build Inviwo"
+name: "GHA test"
 
 on: 
   push:
@@ -13,7 +13,6 @@ permissions:
 jobs:
   regression:
     name: "Regression"
-    runs-on: [linux]
     timeout-minutes: 320
     steps:
 
