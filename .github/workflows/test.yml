@@ -13,6 +13,7 @@ permissions:
 jobs:
   regression:
     name: "Regression"
+    runs-on: [linux-latest]
     timeout-minutes: 320
     steps:
 
