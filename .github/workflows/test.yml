@@ -16,7 +16,7 @@ jobs:
     runs-on: [ubuntu-24.04]
     timeout-minutes: 320
     permissions:
-      issues: write
+      pull-requests: write
     steps:
 
 
