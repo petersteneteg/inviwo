@@ -55,6 +55,7 @@ jobs:
         S3: ${{ steps.s3.outcome }}
 
       run: |
+        set +x
         if [[ $S1 == "failure" ]]
         then
           gh pr edit "$NUMBER" --add-label "S1ERROR"
