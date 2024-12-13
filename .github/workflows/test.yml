@@ -55,29 +55,29 @@ jobs:
       run: |
         if [[ $S1 == "failure" ]]
         then
-          gh pull_request edit "$NUMBER" --add-label "S1ERROR"
+          gh pr edit "$NUMBER" --add-label "S1ERROR"
         fi
         if [[ $S1 == "failure" ]]
         then
-          gh pull_request edit "$NUMBER" --remove-label "S1ERROR"
+          gh pr edit "$NUMBER" --remove-label "S1ERROR"
         fi
 
         if [[ $S2 == "failure" ]]
         then
-          gh pull_request edit "$NUMBER" --add-label "S2ERROR"
+          gh pr edit "$NUMBER" --add-label "S2ERROR"
         fi
         if [[ $S2 == "failure" ]]
         then
-          gh pull_request edit "$NUMBER" --remove-label "S2ERROR"
+          gh pr edit "$NUMBER" --remove-label "S2ERROR"
         fi
 
         if [[ $S3 == "failure" ]]
         then
-          gh pull_request edit "$NUMBER" --add-label "S3ERROR"
+          gh pr edit "$NUMBER" --add-label "S3ERROR"
         fi
         if [[ $S3 == "failure" ]]
         then
-          gh pull_request edit "$NUMBER" --remove-label "S3ERROR"
+          gh pr edit "$NUMBER" --remove-label "S3ERROR"
         fi
 
         if [[ $S1 == "success" ]] && [[ $S2 == "success" ]] && [[ $S2 == "success" ]]
