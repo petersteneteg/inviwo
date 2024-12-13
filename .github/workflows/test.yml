@@ -32,7 +32,7 @@ jobs:
       continue-on-error: true
       shell: bash
       run: |
-        exit 1
+        exit 0
     
     - name: "Step 3"
       id: s3
@@ -56,34 +56,34 @@ jobs:
 
       run: |
         set +x
-        if [[ $S1 == "failure" ]]
+        if [[ ${S1} == "failure" ]]
         then
           gh pr edit "$NUMBER" --add-label "S1ERROR"
         fi
-        if [[ $S1 == "success" ]]
+        if [[ ${S1} == "success" ]]
         then
           gh pr edit "$NUMBER" --remove-label "S1ERROR" || true
         fi
 
-        if [[ $S2 == "failure" ]]
+        if [[ ${S2} == "failure" ]]
         then
           gh pr edit "$NUMBER" --add-label "S2ERROR"
         fi
-        if [[ $S2 == "success" ]]
+        if [[ ${S2} == "success" ]]
         then
           gh pr edit "$NUMBER" --remove-label "S2ERROR" || true
         fi
 
-        if [[ $S3 == "failure" ]]
+        if [[ ${S3} == "failure" ]]
         then
           gh pr edit "$NUMBER" --add-label "S3ERROR"
         fi
-        if [[ $S3 == "success" ]]
+        if [[ ${S3} == "success" ]]
         then
           gh pr edit "$NUMBER" --remove-label "S3ERROR" || true
         fi
 
-        if [[ $S1 == "success" ]] && [[ $S2 == "success" ]] && [[ $S2 == "success" ]]
+        if [[ ${S1} == "success" ]] && [[ ${S2} == "success" ]] && [[ ${S3} == "success" ]]
         then
           exit 0
         else
